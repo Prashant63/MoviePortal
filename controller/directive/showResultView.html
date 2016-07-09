@@ -1,0 +1,17 @@
+<div class="showResult">
+	<div class="flex-items">
+		<img src='{{movieData.Poster}}' >
+	</div>
+	<div class="flex-items">
+		<Strong>{{movieData.Title}}</Strong>
+		<span ng-click="addToFav(movieData)"><span class="glyphicon glyphicon-heart"></span> <u>Add to favorite</u></span>
+		<div>
+			<span>{{movieData.Year}}</span>
+			<span>- {{movieData.Genre}}</span>
+			<span>- {{movieData.Runtime}}</span>
+		</div>
+		<div>
+			{{movieData.Plot}}
+		</div>
+	</div>
+</div>

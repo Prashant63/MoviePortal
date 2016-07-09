@@ -1,0 +1,19 @@
+<div class="showResult" ng-repeat="fav in fromLib">
+	<div class="flex-items">
+		<img src='{{fav.Poster}}' >
+	</div>
+	<div class="flex-items">
+		<Strong>{{fav.Title}}</Strong>
+		<span ng-click="addToFav(fav)" class="favorite"><span class="glyphicon glyphicon-heart"></span> <u>Add to favorite</u></span>
+		<div>
+			<span>{{fav.Year}}</span>
+			<span>- {{fav.Genre}}</span>
+			<span>- {{fav.Runtime}}</span>
+		</div>
+		<div>
+			{{fav.Plot}}
+		</div>
+		<movie-review fav="fav" add-review="addReview"></movie-review>
+	</div>
+
+</div>

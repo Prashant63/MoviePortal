@@ -1,0 +1,9 @@
+{
+  "name": "movie-portal",
+  "version": "0.0.0",
+  "dependencies": {
+    "express": "",
+    "mongoose": "",
+    "body-parser": ""
+  }
+}

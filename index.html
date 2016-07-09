@@ -1,0 +1,67 @@
+<!DOCTYPE html5>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, scale=1">
+		<link rel="stylesheet" href="style/css/bootstrap.min.css">
+		<link rel="stylesheet" href="style/movie.css">
+		<link rel="stylesheet" href="style/login.css">
+		<script src="script/angular.min.js"></script>
+		<script src="script/jquery.min.js"></script>
+		<script src="script/bootstrap.min.js"></script>
+		<script src="script/app.js"></script>
+		<script src="service/omdbapiService.js"></script>
+		<script src="service/storageService.js"></script>
+		<script src="controller/myMovie.js"></script>
+		<script src="controller/directive/showResult.js"></script>
+		<script src="controller/directive/showFavDirective.js"></script>
+		<script src="controller/directive/movieReviewDirective.js"></script>
+	</head>
+
+	<body ng-app="app">
+		<div class="container" ng-controller="myMovie">
+			    <div class="row" ng-show="isUserLoggedIn == false">
+			        <div class="col-md-offset-5 col-md-3">
+			            <div class="form-login">
+			            <h4>Welcome back.</h4>
+			            <input type="text" id="userName" ng-model="email" class="form-control input-sm chat-input" placeholder="username" />
+			            </br>
+			            <input type="text" id="userPassword" ng-model="password" class="form-control input-sm chat-input" placeholder="password" />
+			            </br>
+			            <span ng-show="loginError">Invalid Password. Try Again!</span>
+			            <div class="wrapper">
+			            <span class="group-btn">     
+			                <a ng-click="login()" class="btn btn-primary btn-md">login <i class="fa fa-sign-in"></i></a>
+			            </span>
+			            </div>
+			            </div>
+			        
+			        </div>
+			    </div>
+
+			<div ng-hide="isUserLoggedIn == false">
+			<nav class="nav_bar">
+				<span>Movie Buddy</span>
+				<div>
+					<span class="glyphicon glyphicon-heart" ng-click="showLib()"></span>
+					<a ng-click="logout()"><span class="glyphicon glyphicon-log-out" ></span>Log Out</a>
+				</div>
+			</nav>
+			<div class="flex-container">
+				<div class="items">
+				  	<input type="text" ng-model="movieName" placeholder="enter movie name" ng-keypress="($event.which === 13) ? requestMovie():0"/>
+				 	<i class="glyphicon glyphicon-search" aria-hidden="true" ng-click="requestMovie()"></i>
+				</div>
+			</div>
+
+			<div>
+				<show-result ng-if="movieDataPresent" movie-data="movieData" add-to-fav="addToFav" get-poster="getPoster"></show-result>
+			</div>
+
+			<div class="jumbotron">
+				<show-fav from-lib="fromLib" add-review="addReview"></show-fav>
+			</div>
+			</div>
+		</div>
+	</body>
+</html>
